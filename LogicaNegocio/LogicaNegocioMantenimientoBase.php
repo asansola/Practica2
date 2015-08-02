@@ -62,6 +62,6 @@
 		/**
 		 * Listar todos los datos de la entidad
 		 */
-		abstract protected function Listar();
+		abstract protected function Listar($lim1,$lim2);
 	}
 ?>

@@ -6,16 +6,13 @@ include ("IncluirClases.php");
 if (isset ( $_GET ['id'] )) {
 	
 	$id = $_GET ['id'];
-
-	$libro = new LibrosBLL();
-	$vlibro = $libro->ConsultarRegistro($id);
 }
 
 
 //si hizo click en el envio
 if (isset ( $_POST ['submit'] )) {
 	//captura de datos	
-	$id = $_POST ['idHidden'];
+//	$id = $_POST ['idHidden'];
 	$isbn= $_POST ['isbn'];
 	$titulo = $_POST ['titulo'];
 	$tema = $_POST ['tema'];
@@ -23,7 +20,6 @@ if (isset ( $_POST ['submit'] )) {
 	
 	$elibrolibro = new Libros();
 	
-	$elibrolibro->setNum_referencia($id);
 	$elibrolibro->setIsbn($isbn);
 	$elibrolibro->setTitulo($titulo);
 	$elibrolibro->setTema($tema);
@@ -31,60 +27,53 @@ if (isset ( $_POST ['submit'] )) {
 	
 	$libroBLL = new LibrosBLL();
 	
-	$libroBLL->Modificar($elibrolibro);
+	$libroBLL->Agregar($elibrolibro);
 
 	if($libroBLL->getHayError() ){ 
-		$mensaje="Registro no modificado: Error en el registro";
+		$mensaje="Registro no agregado: El ISBn YA existe!";
 		echo "<script>";
 		echo "if(alert('$mensaje'));";
 		echo "window.location='mantenimientoLibro.php'";
 		echo "</script>";
 	}
 	else{
-		$mensaje="Actualizado correctamente";
+		$mensaje="Agregado correctamente";
 		echo "<script>";
 		echo "if(alert('$mensaje'));";
 		echo "window.location='mantenimientoLibro.php'";
 		echo "</script>";
 	}
 	
-	//sea cual sea el caso lo retorna a mantenimientos
-	//header ( "location: mantenimientoLibro.php" );
-
 }
 	
 ?>
 
 <br><br><br><br>
-<form method="post" action="ModificarLibro.php" role="form" data-toggle="validator">
+<form method="post" action="NuevoLibro.php" role="form" data-toggle="validator">
 	<div class="modal-body">
 		<table width='300px' align='Center' border=1>
 	
-			<div class='form-group'>
-					<label for='id'>Numero Referencia</label>
-					<input class='form-control' name='id' type='text' id='id' value="<?php echo $vlibro[0][0];?>" disabled>
-					<input type='hidden' name='idHidden' id='idHidden' value="<?php echo $vlibro[0][0];?>">
-			</div>
 			
 			<div class='form-group'>
 				
 					<label for='nombre'>ISBN:</label>
-					<input class='form-control' name='isbn' type='text' value="<?php echo $vlibro[0][1];?>" id='isbn' required >
+					<input class='form-control' name='isbn' type='text' value="" id='isbn' required >
 			</div>
 			<div class='form-group'>
 					<label for='precio'>Titulo:</label>
-					<input class='form-control' name='titulo' type='text' value="<?php echo $vlibro[0][2];?>" id='titulo' >
+					<input class='form-control' name='titulo' type='text' value="" id='titulo' >
 			</div>
 			
 			<div class='form-group'>
 					<label for='precio'>Tema:</label>
-					 <textarea name="tema" placeholder="Tema" readonly="true"><?php echo$vlibro[0][3];?></textarea>
+					 <textarea name="tema" placeholder="Tema" readonly="true">Escriba tema aqui
+					 </textarea>
 					 
 			</div>
 			
 			<div class='form-group'>
 					<label for='precio'>Autor:</label>
-					<input class='form-control' name='autor' type='text' value="<?php echo $vlibro[0][4];?>" id='autor' pattern="[A-Za-z ñáéíóú ]*">
+					<input class='form-control' name='autor' type='text' value="" id='autor' pattern="[A-Za-z ñáéíóú ]*">
 			</div>
 		
 			
@@ -94,7 +83,7 @@ if (isset ( $_POST ['submit'] )) {
 	
 	<div class="footer">
 		<input type="submit" class="btn btn-primary" name="submit"
-			value="Actualizar Datos" />&nbsp;
+			value="Agregar Libro" />&nbsp;
 			<a href='MantenimientoLibro.php'>Cancelar</a>
 	</div>
 </form>	

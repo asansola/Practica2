@@ -11,13 +11,13 @@ class LibrosAccesoDatos extends MantenimientoBase{
 		FactoriaDAO::setTipoBaseDatos("MySQL");
 	}
 
-	public function Agregar($oBibliotecario){
+	public function Agregar($oLibro){
 		//Inicializar el control de Errores
 		parent::setHayError(False);
 			
 		//Invocar el Procedimiento Almacenado
 		$descripcionError='';
-		$vSql = "CALL sp_I_Usuario (" . $oUsuario ->getId() . ", '" . $oUsuario->getClave() . "', '" . $oUsuario->getNombre() . "', '" . $oUsuario->getApellidos() . "', " . $oUsuario->getIdhorario() . ", " . $oUsuario->getIdrol() . ", @DescripcionError);";
+		$vSql = "CALL sp_I_Libro ('" . $oLibro->getIsbn() . "', '" . $oLibro->getTitulo() . "', '" . $oLibro->getTema() . "', '" . $oLibro->getAutor() . "', @DescripcionError);";
 		FactoriaDAO::getConexionBaseDatos()->AbrirConexion();
 		FactoriaDAO::getConexionBaseDatos()->EjecutarSQLError($vSql);
 			
@@ -32,13 +32,13 @@ class LibrosAccesoDatos extends MantenimientoBase{
 		
 	}
 
-	public function Modificar($oBibliotecario){
+	public function Modificar($oLibro){
 		//Inicializar el control de Errores
 		parent::setHayError(False);
 		
 			
 		//Invocar el Procedimiento Almacenado
-		$vSql = "CALL sp_U_Usuario (" . $oUsuario ->getId() . ", '" . $oUsuario->getClave() . "', '" . $oUsuario->getNombre() . "', '" . $oUsuario->getApellidos() . "', " . $oUsuario->getIdhorario() . ", " . $oUsuario->getIdrol() . ", @DescripcionError);";
+		$vSql = "CALL sp_U_Libro (" . $oLibro ->getNum_referencia() . ", '" . $oLibro->getIsbn() . "', '" . $oLibro->getTitulo() . "', '" . $oLibro->getTema() . "', '" . $oLibro->getAutor() . "', @DescripcionError);";
 		FactoriaDAO::getConexionBaseDatos()->AbrirConexion();
 		FactoriaDAO::getConexionBaseDatos()->EjecutarSQLError($vSql);
 		
@@ -74,7 +74,7 @@ class LibrosAccesoDatos extends MantenimientoBase{
 	}
 		
 
-	public function Listar(){
+	public function Listar($l1,$l2){
 		//Variables Locales
 		$vResultadoCursor = null;
 		$queryResult=NULL;

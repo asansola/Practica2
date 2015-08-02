@@ -45,7 +45,7 @@ class Libros /*extends EntidadBase*/{
 		$this->tema= $pTema;
 	}
 	public function setAutor($pAutor){
-		$this->edad= $pAutor;
+		$this->autor= $pAutor;
 	}
 
 }

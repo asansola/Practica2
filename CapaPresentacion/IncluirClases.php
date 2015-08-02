@@ -14,8 +14,10 @@ require_once("../Entidades/Prestamos.php");
 require_once("../AccesoDatos/MantenimientoBase.php");
 require_once("../AccesoDatos/BibliotecariosAccesoDatos.php");
 require_once("../AccesoDatos/LibrosAccesoDatos.php");
+require_once("../AccesoDatos/PrestamosAccesoDatos.php");
 
 require_once("../LogicaNegocio/LogicaNegocioMantenimientoBase.php");
 require_once("../LogicaNegocio/LibrosBLL.php");
+require_once("../LogicaNegocio/PrestamosBLL.php");
 
 ?>

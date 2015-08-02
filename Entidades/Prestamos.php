@@ -1,5 +1,5 @@
 <?php
-class Prestamos /*extends EntidadBase*/{
+class Prestamos extends EntidadBase{
 	
 	private $num_prestamo;
 	private $num_referencia_libro;

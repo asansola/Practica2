@@ -23,8 +23,8 @@
 			</ul>
 			<li><a href=''>Prestamos</a>
 			<ul>
-				<li><a href="">Submenu</a>
-				<li><a href="">Submenu2</a>
+				<li><a href="prestamosPaginacion.php">Prestamos Registrados</a>
+				<li><a href="PDF.php">PDF</a>
 			</ul>
 				
 		</ul>

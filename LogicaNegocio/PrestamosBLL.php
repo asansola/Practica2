@@ -1,8 +1,9 @@
 <?php
 
-class LibrosBLL extends LogicaNegocioMantenimientoBase{
+class PrestamosBLL extends LogicaNegocioMantenimientoBase
+{
 
-	private $oLibro= null;
+	private $oPrestamo= null;
 
 	private $hayError;
 	private $descripcionError;
@@ -11,31 +12,31 @@ class LibrosBLL extends LogicaNegocioMantenimientoBase{
 		//Asignar Valores por defecto a los atributos de la instancia
 		$this->hayError = false;			
 		//Crear la instancia del objeto
-		$this->oLibro = new LibrosAccesoDatos();
+		$this->oPrestamo = new PrestamosAccesoDatos();
 	}
 
 	public function getHayError(){
-		return $this->oLibro->getHayError();
+		return $this->oPrestamo->getHayError();
 	}
 
 	public function setHayError($pHayError) {
-		$this->oLibro->setHayError($pHayError);
+		$this->oPrestamo->setHayError($pHayError);
 	}
 
 	public function getDescripcionError(){
-		return $this->oLibro->getDescripcionError();
+		return $this->oPrestamo->getDescripcionError();
 	}
 
 	public function setDescripcionError($pDescripcionError) {
-		$this->oLibro->setDescripcionError($pDescripcionError);
+		$this->oPrestamo->setDescripcionError($pDescripcionError);
 	}
 
 	public function Agregar($oLibro){
-		return $this->oLibro->Agregar($oLibro);
+		return $this->oPrestamo->Agregar($oLibro);
 	}
 
 	public function Modificar($oLibro){
-		return $this->oLibro->Modificar($oLibro);
+		return $this->oPrestamo->Modificar($oLibro);
 	}
 
 	public function Eliminar($oLibro){
@@ -43,20 +44,24 @@ class LibrosBLL extends LogicaNegocioMantenimientoBase{
 	}
 	
 	public function Consultar($oLibro){
-		return $this->oLibro->Consultar($oLibro);
+		return $this->oPrestamo->Consultar($oLibro);
 	}
 	
 	public function ConsultarRegistro($id){  //consulta por id de usuario con descripciones
-		return $this->oLibro->ConsultarRegistro($id);
+		return $this->oPrestamo->ConsultarRegistro($id);
 	}
 	
 
 	public function Verificar($id,$clave){ //consulta por id y clave
-		return $this->oLibro->Verificar($id,$clave);
+		return $this->oPrestamo->Verificar($id,$clave);
 	}
 
 	public function Listar($lim1,$lim2){
-		return $this->oLibro->Listar($lim1,$lim2);
+		return $this->oPrestamo->Listar($lim1,$lim2);
+	}
+	
+	public function Contar(){
+		return $this->oPrestamo->Contar();
 	}
 
 }

@@ -19,9 +19,10 @@ include 'Menu.php';
 	
 	//Crear la instancia del Componente de L�gicas de Negocio
 	$LibroBLL = new LibrosBLL();
-	
+	$list1="";
+	$list2="";
 	//Invocar el m�todo de Listas
-	$resultado = $LibroBLL->Listar();
+	$resultado = $LibroBLL->Listar($list1,$list2);
 	//Si hay tuplas, cargar el mantenimiento
 	if ($resultado!=FALSE){
 		echo "<a href='NuevoLibro.php?accion=I&id=0'>Nuevo Libro</a><br/><br/>";
